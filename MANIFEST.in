@@ -1,2 +1,7 @@
-include orangecontrib/example/tutorials/*.ows
-include orangecontrib/example/widgets/icons/*
+recursive-include orangecontrib/chem *.svg *.png *.jpg
+
+include requirements.txt
+include README.md
+include LICENSE.txt
+include about.md
+include *.py *.txt

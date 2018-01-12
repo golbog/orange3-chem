@@ -94,7 +94,7 @@ def include_documentation(local_dir, install_dir):
 
 
 if __name__ == '__main__':
-    include_documentation('doc/build/html', 'help/orange3-chem')
+    include_documentation('doc/_build/html', 'help/orange3-chem')
     setup(
         name=NAME,
         version=VERSION,
