@@ -7,7 +7,7 @@ Orange3 Chemoinformatics is an add-on for the [Orange3](http://orange.biolab.si)
 
 Installation
 ------------
-RDKit is a requirement for this widget. To install it run
+RDKit is a requirement for this add-on. To install it run
 
     sudo apt-get install python-rdkit librdkit1 rdkit-data
 
