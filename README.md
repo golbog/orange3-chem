@@ -1,16 +1,12 @@
 Orange3 Chemoinformatics
 =======================
-[![Build Status](https://travis-ci.org/biolab/orange3-imageanalytics.svg?branch=master)](https://travis-ci.org/biolab/orange3-imageanalytics)
-[![codecov](https://codecov.io/gh/biolab/orange3-imageanalytics/branch/master/graph/badge.svg)](https://codecov.io/gh/biolab/orange3-imageanalytics)
+[![Build Status](https://travis-ci.org/biolab/orange3-chem.svg?branch=master)](https://travis-ci.org/biolab/orange3-chem)
+[![codecov](https://codecov.io/gh/biolab/orange3-chem/branch/master/graph/badge.svg)](https://codecov.io/gh/biolab/orange3-chem)
 
 Orange3 Chemoinformatics is an add-on for the [Orange3](http://orange.biolab.si) data mining suite. It provides extensions for embedding molecule dataset annotated with SMILES through a pre-trained deep neural networks.
 
 Installation
 ------------
-RDKit is a requirement for this add-on. To install it run
-
-    sudo apt-get install python-rdkit librdkit1 rdkit-data
-
 To install the add-on from source run
 
     python setup.py install
@@ -38,4 +34,4 @@ or
 
     python3 -m Orange.canvas
 
-New widgets are in the toolbox bar under the Image Analytics section.
+New widgets are in the toolbox bar under the Chemoinformatics section.
