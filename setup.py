@@ -14,14 +14,14 @@ NAME = "Orange3-Chemoinformatics"
 
 MAJOR = 0
 MINOR = 0
-MICRO = 1
+MICRO = 2
 VERSION = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 
 AUTHOR = 'Bioinformatics Laboratory, FRI UL'
 AUTHOR_EMAIL = 'contact@orange.biolab.si'
 
 URL = 'http://orange.biolab.si/download'
-DESCRIPTION = 'Orange3 add-on for image data mining.'
+DESCRIPTION = 'Orange3 add-on for Chemoinformatics.'
 LONG_DESCRIPTION = ABOUT
 LICENSE = 'GPL3+'
 
