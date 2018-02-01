@@ -64,7 +64,7 @@ class MoleculeEmbedder(Http2Client):
     MAX_REPEATS = 4
     CANNOT_LOAD = "cannot load"
 
-    def __init__(self, model="CNNFP", layer="penultimate",
+    def __init__(self, model="smiles", layer="penultimate",
                  server_url='193.2.72.59:80'):
         super().__init__(server_url)
         model_settings = self._get_model_settings_confidently(model, layer)
