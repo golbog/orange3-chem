@@ -55,7 +55,6 @@ class Http2Client(object):
         self._max_concurrent_streams = None
 
     def _connect_to_server(self):
-        print(self._server_url)
         return HTTP20Connection(host=self._server_url, force_proto='h2')
 
     def _read_max_concurrent_streams(self):
