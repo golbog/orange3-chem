@@ -7,7 +7,7 @@ Orange3 Chemoinformatics is an add-on for the [Orange3](http://orange.biolab.si)
 
 Installation
 ------------
-Orange3-Chemoinformatics requires [RDKit](http://www.rdkit.org/). To easy install it trough Anaconda run
+Orange3-Chemoinformatics requires [RDKit](http://www.rdkit.org/), that is conda-installable running
 
     conda install -c rdkit rdkit
 
