@@ -1,12 +1,8 @@
-import ftplib
 import logging
 import random
 import uuid
-from io import BytesIO
 from itertools import islice
 from os.path import join, isfile
-from urllib.parse import urlparse
-from urllib.request import urlopen, URLError
 from AnyQt.QtCore import QSettings
 
 import cachecontrol.caches
@@ -15,7 +11,6 @@ import requests
 
 from Orange.data import ContinuousVariable, Domain, Table
 from Orange.misc.environ import cache_dir
-from requests.exceptions import RequestException
 
 from orangecontrib.chem.http2_client import Http2Client
 from orangecontrib.chem.http2_client import MaxNumberOfRequestsError
