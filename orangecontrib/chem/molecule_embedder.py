@@ -38,34 +38,21 @@ MODELS = {
 
 class EmbeddingCancelledException(Exception):
     """Thrown when the embedding task is cancelled from another thread.
-    (i.e. ImageEmbedder.cancelled attribute is set to True).
+    (i.e. MoleculeEmbedder.cancelled attribute is set to True).
     """
 
 
 class MoleculeEmbedder(Http2Client):
     """"Client side functionality for accessing a remote http2
-    image embedding backend.
+    molecule embedding backend.
 
-    Examples
-    --------
-    # >>> from orangecontrib.imageanalytics.image_embedder import ImageEmbedder
-    # >>> image_file_paths = [...]
-    # >>> with ImageEmbedder(model='model_name', layer='penultimate') as embedder:
-    # ...    embeddings = embedder(image_file_paths)
-    # or:
-    # >>> from orangecontrib.imageanalytics.image_embedder import ImageEmbedder
-    # >>> from orangecontrib.imageanalytics.import_images import ImportImages
-    # >>> import_images = ImportImages()
-    # >>> images, err = import_images("...")
-    # >>> image_embedder = ImageEmbedder()
-    # >>> embedded_images, skipped_images, num_skipped = image_embedder(images)
     """
     _cache_file_blueprint = '{:s}_{:s}_embeddings.pickle'
     MAX_REPEATS = 4
     CANNOT_LOAD = "cannot load"
 
     def __init__(self, model="smiles", layer="penultimate",
-                 server_url='193.2.72.59:80'):
+                 server_url='api.garaza.io:443'):
         super().__init__(server_url)
         model_settings = self._get_model_settings_confidently(model, layer)
         self._model = model
@@ -282,7 +269,7 @@ class MoleculeEmbedder(Http2Client):
                 raise EmbeddingCancelledException()
 
             if not stream_id and not cache_key:
-                # when image cannot be loaded
+                # when smiles cannot be loaded
                 embeddings.append(self.CANNOT_LOAD)
 
                 if smiles_processed_callback:
@@ -290,7 +277,7 @@ class MoleculeEmbedder(Http2Client):
                 continue
 
             if not stream_id:
-                # skip rest of the waiting because image was either
+                # skip rest of the waiting because smiles was either
                 # skipped at loading or is present in the local cache
                 embedding = self._get_cached_result_or_none(cache_key)
                 embeddings.append(embedding)
