@@ -4,14 +4,11 @@ Molecule Image Viewer Widget
 
 """
 import sys
-import os
-import weakref
 import logging
 import enum
 import itertools
 from xml.sax.saxutils import escape
 from collections import namedtuple
-from functools import partial
 from itertools import zip_longest
 
 import numpy
@@ -1147,7 +1144,7 @@ def main(argv=sys.argv):
 
     app = QApplication(argv)
     argv = app.arguments()
-    w = OWImageViewer()
+    w = OWMoleculeViewer()
     w.show()
     w.raise_()
 
