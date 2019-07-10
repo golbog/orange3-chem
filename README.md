@@ -5,11 +5,15 @@ Orange3 Chemoinformatics
 
 Orange3 Chemoinformatics is an add-on for the [Orange3](http://orange.biolab.si) data mining suite. It provides extensions for embedding molecule dataset annotated with SMILES through a pre-trained deep neural networks.
 
+This is fork of the original Chemoinformatics widget with custom embedder. Embedder widget implements four different methods: substructure, circular, topological fingerpritns and and encoder of the autoencoder.
+
 Installation
 ------------
 Orange3-Chemoinformatics requires [RDKit](http://www.rdkit.org/), that is conda-installable running
 
     conda install -c rdkit rdkit
+
+and NumPy based deep learning package (https://github.com/PrimozGodec/ndf)
 
 To install the add-on from source run
 
@@ -39,3 +43,6 @@ or
     python3 -m Orange.canvas
 
 New widgets are in the toolbox bar under the Chemoinformatics section.
+
+Example of an annotated database:
+https://s3-us-west-1.amazonaws.com/deepchem.io/datasets/molnet_publish/clintox.zip
