@@ -46,8 +46,8 @@ CHARSET = OrderedDict(
 
 
 class OWMoleculeEmbedder(widget.OWWidget):
-    name = "Molecule Embedder"
-    description = "Embedding of molecule in SMILES notation."
+    name = "Fingerprints"
+    description = "Fingerprints of molecules in SMILES notation."
     icon = "../widgets/icons/category.svg"
     priority = 150
 
