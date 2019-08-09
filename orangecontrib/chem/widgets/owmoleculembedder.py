@@ -28,22 +28,22 @@ from orangecontrib.chem.preprocess import encoder, moleculeembedder
 
 AUTOENCODER = "Autoencoder"
 CIRCULAR = "Circular"
-
-EMBEDDERS = OrderedDict({
-    "Topological": Chem.RDKFingerprint,
-    CIRCULAR: Chem.AllChem.GetMorganFingerprintAsBitVect,
-    "MACCS": Chem.MACCSkeys.FingerprintMol,
-    AUTOENCODER: encoder.encoder, }
-)
-
+MACCS = "MACCS"
 CIRCLE_RAD = 5
 MAXLEN = 120
+
 CHARSET = OrderedDict(
     [(" ", 0), ("#", 1), ("(", 2), (")", 3), ("+", 4), ("-", 5), ("/", 6), ("1", 7), ("2", 8), ("3", 9), ("4", 10),
      ("5", 11), ("6", 12), ("7", 13), ("8", 14), ("=", 15), ("@", 16), ("B", 17), ("C", 18), ("F", 19), ("H", 20),
      ("I", 21), ("N", 22), ("O", 23), ("P", 24), ("S", 25), ("[", 26), ("\\", 27), ("]", 28), ("c", 29), ("l", 30),
      ("n", 31), ("o", 32), ("r", 33), ("s", 34), ])
 
+EMBEDDERS = OrderedDict({
+    "Topological": Chem.RDKFingerprint,
+    CIRCULAR: Chem.AllChem.GetMorganFingerprintAsBitVect,
+    MACCS: Chem.MACCSkeys.FingerprintMol,
+    AUTOENCODER: encoder.encoder, }
+)
 
 class OWMoleculeEmbedder(widget.OWWidget):
     name = "Fingerprints"
@@ -154,10 +154,15 @@ class OWMoleculeEmbedder(widget.OWWidget):
             invalid = list(set(range(len(smiles))) - set(valid))
 
             if not valid == []:
+
+                domain = [ContinuousVariable.make("C_{}".format(x)) for x in
+                         range(embedded.shape[1])]
+                if self._embedder == MACCS:
+                    domain = [ContinuousVariable.make(name)
+                              for name, _ in Chem.MACCSkeys.smartsPatts.values()]
+                    domain.append(ContinuousVariable.make('?'))
                 embedded_table = Table.from_numpy(
-                    Domain(
-                        [ContinuousVariable.make("C_{}".format(x)) for x in
-                         range(embedded.shape[1])],
+                    Domain(domain,
                         self.data.domain.class_vars,
                         self.data.domain.metas
                     ),
